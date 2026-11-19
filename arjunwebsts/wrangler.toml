@@ -3,3 +3,7 @@ compatibility_date = "2026-11-19"
 
 [assets]
 directory = "./public"
+
+[[kv_namespaces]]
+binding = "CONTENT"
+id = "7c31972184144193ada0aaab7adb52d2"
