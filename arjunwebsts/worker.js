@@ -147,7 +147,7 @@ const pages = {
   "/about": () => page("About \u2014 Arjun", nav("/about") + `
     <section class="page-section"><div class="container"><h1>About Me</h1><div class="page-content">
       <img src="${img("person")}" alt="Portrait of Arjun">
-      <div class="page-text"><p>I'm Arjun, a developer and creative technologist who loves building things that live on the web. I enjoy the full process \u2014 from designing interfaces to deploying scalable services on the edge.</p><p>Beyond code, I'm passionate about photography, playing the piano, and exploring the mountains. This site is a collection of all the things I care about.</p><h2>Skills</h2><div class="skills">${skills.map(s => `<span class="skill-chip">${s}</span>`).join("")}</div></div>
+      <div class="page-text"><p>I'm Arjun, a Space Explorer, developer and creative technologist who loves building things that live on the web. I enjoy the full process \u2014 from designing interfaces to deploying scalable services on the edge.</p><p>Beyond code, I'm passionate about photography, playing the piano, and exploring the mountains. This site is a collection of all the things I care about.</p><h2>Skills</h2><div class="skills">${skills.map(s => `<span class="skill-chip">${s}</span>`).join("")}</div></div>
     </div></div></section>`),
 
   "/projects": () => page("Projects \u2014 Arjun", nav("/projects") + `
