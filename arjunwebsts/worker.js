@@ -1,7 +1,7 @@
 // arjunweb — Personal Portfolio Worker (colorful edition)
 // Single-file deployment: all pages, styles, and SVG images inline.
 
-const SVG = {
+export const SVG = {
   person: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6c5ce7"/><stop offset="0.5" stop-color="#a29bfe"/><stop offset="1" stop-color="#fd79a8"/></linearGradient></defs><rect width="800" height="600" fill="url(#bg)"/><circle cx="400" cy="230" r="80" fill="#fff" opacity="0.95"/><path d="M280 600 Q280 380 400 380 Q520 380 520 600 Z" fill="#fff" opacity="0.95"/><circle cx="400" cy="230" r="100" fill="none" stroke="#fff" stroke-width="3" opacity="0.3"/></svg>`,
   project: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0984e3"/><stop offset="0.5" stop-color="#00cec9"/><stop offset="1" stop-color="#6c5ce7"/></linearGradient></defs><rect width="800" height="600" fill="url(#bg2)"/><rect x="180" y="120" width="440" height="300" rx="12" fill="#fff" opacity="0.15"/><rect x="180" y="120" width="440" height="40" rx="12" fill="#fff" opacity="0.25"/><circle cx="205" cy="140" r="6" fill="#fff" opacity="0.8"/><circle cx="225" cy="140" r="6" fill="#fff" opacity="0.6"/><circle cx="245" cy="140" r="6" fill="#fff" opacity="0.4"/><rect x="210" y="190" width="180" height="10" rx="3" fill="#fff" opacity="0.7"/><rect x="210" y="215" width="280" height="10" rx="3" fill="#fff" opacity="0.4"/><rect x="210" y="240" width="220" height="10" rx="3" fill="#fff" opacity="0.4"/><rect x="240" y="265" width="260" height="10" rx="3" fill="#fff" opacity="0.5"/><rect x="240" y="290" width="200" height="10" rx="3" fill="#fff" opacity="0.4"/><rect x="210" y="315" width="160" height="10" rx="3" fill="#fff" opacity="0.4"/><rect x="210" y="340" width="300" height="10" rx="3" fill="#fff" opacity="0.5"/></svg>`,
   photography: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e84393"/><stop offset="0.5" stop-color="#fd79a8"/><stop offset="1" stop-color="#fdcb6e"/></linearGradient></defs><rect width="800" height="600" fill="url(#sky)"/><rect x="250" y="200" width="300" height="200" rx="20" fill="#fff" opacity="0.9"/><rect x="250" y="200" width="300" height="50" rx="20" fill="#fff" opacity="0.7"/><circle cx="400" cy="320" r="70" fill="#2d3436" opacity="0.8"/><circle cx="400" cy="320" r="50" fill="#636e72" opacity="0.7"/><circle cx="400" cy="320" r="30" fill="#2d3436"/><circle cx="385" cy="305" r="10" fill="#fff" opacity="0.3"/><rect x="480" y="215" width="40" height="20" rx="4" fill="#ffeaa7" opacity="0.8"/><circle cx="290" cy="225" r="12" fill="#ffeaa7" opacity="0.8"/></svg>`,
@@ -146,12 +146,14 @@ const pages = {
 
   "/about": () => page("About \u2014 Arjun", nav("/about") + `
     <section class="page-section"><div class="container"><h1>About Me</h1><div class="page-content">
-      <img src="${img("person")}" alt="Portrait of Arjun">
+    <!-- image: person (override at /admin -> Images) -->
+    <img src="${img("person")}" alt="Portrait of Arjun">
       <div class="page-text"><p>I'm Arjun, a Space Explorer, developer and creative technologist who loves building things that live on the web. I enjoy the full process \u2014 from designing interfaces to deploying scalable services on the edge.</p><p>Beyond code, I'm passionate about photography, playing the piano, and exploring the mountains. This site is a collection of all the things I care about.</p><h2>Skills</h2><div class="skills">${skills.map(s => `<span class="skill-chip">${s}</span>`).join("")}</div></div>
     </div></div></section>`),
 
   "/projects": () => page("Projects \u2014 Arjun", nav("/projects") + `
     <section class="page-section"><div class="container"><h1>Projects</h1>
+     <!-- image: project (override at /admin -> Images) -->
       <img src="${img("project")}" alt="Featured project" class="hero-img">
       <p class="intro">A selection of things I've built. From web apps to APIs to creative experiments.</p>
       <div class="project-grid">${projects.map(p => `<a href="#" class="project-card"><h3>${p.title}</h3><p>${p.desc}</p><div class="project-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div></a>`).join("")}</div>
@@ -159,6 +161,7 @@ const pages = {
 
   "/photography": () => page("Photography \u2014 Arjun", nav("/photography") + `
     <section class="page-section"><div class="container"><h1>Photography</h1>
+     <!-- image: photography (override at /admin -> Images) -->
       <img src="${img("photography")}" alt="Camera" class="hero-img">
       <p class="intro">I love capturing moments \u2014 light, texture, and the stories hidden in everyday scenes.</p>
       <div class="photo-grid">${photos.map(p => `<div class="photo-card"><img src="${img("photography")}" alt="${p.title}"><h3>${p.title}</h3><p>${p.desc}</p></div>`).join("")}</div>
@@ -166,6 +169,7 @@ const pages = {
 
   "/music": () => page("Music \u2014 Arjun", nav("/music") + `
     <section class="page-section"><div class="container"><h1>Music</h1>
+    <!-- image: piano (override at /admin -> Images) -->
       <img src="${img("piano")}" alt="Piano" class="hero-img">
       <p class="intro">I play the piano and love exploring pieces from classical to contemporary. Here are some of my favorites to play.</p>
       <div class="music-list">${pieces.map(p => `<div class="music-card"><div class="music-icon">\u266a</div><div class="music-info"><h3>${p.title}</h3><p>${p.composer} \u00b7 ${p.year}</p></div></div>`).join("")}</div>
@@ -173,6 +177,7 @@ const pages = {
 
   "/nature": () => page("Nature \u2014 Arjun", nav("/nature") + `
     <section class="page-section"><div class="container"><h1>Nature</h1>
+    <!-- image: mountain (override at /admin -> Images) -->
       <img src="${img("mountain")}" alt="Mountain landscape" class="hero-img">
       <p class="intro">The mountains are where I go to reset. Here are some of my favorite adventures and the views along the way.</p>
       <div class="nature-grid">${trips.map(t => `<div class="nature-card"><img src="${img("mountain")}" alt="${t.title}"><div class="nature-body"><h3>${t.title}</h3><p>${t.desc}</p><span class="location">\ud83d\udccd ${t.location}</span></div></div>`).join("")}</div>
